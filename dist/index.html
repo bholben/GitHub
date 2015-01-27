@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-  <title>10 GitHub</title>
+  <title>GitHub Demo</title>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <link rel="stylesheet" href="styles/vendor.css">
@@ -20,19 +20,22 @@
       <ul class="left">
         <li><a href="#"><i class="mega-octicon octicon-mark-github"></i></a></li>
         <li><input class="search-github" type="text" placeholder="Search GitHub"></li>
-        <li>Explore</li>
-        <li>Gist</li>
-        <li>Blog</li>
-        <li>Help</li>
+        <li><a href="https://github.com/explore">Explore</a></li>
+        <li><a href="https://gist.github.com">Gist</a></li>
+        <li><a href="https://github.com/blog">Blog</a></li>
+        <li><a href="https://help.github.com">Help</a></li>
       </ul>
       <div>
         <ul class="right">
-          <li class="userimg"><img class="avatar" alt="avatar"></li>
-          <li class="username">bholben</li>
-          <li><a href="#"><i class="octicon octicon-plus menu-down"></i></a></li>
-          <li><a href="#"><i class="octicon octicon-inbox"></i></a></li>
-          <li><a href="#"><i class="octicon octicon-gear"></i></a></li>
-          <li><a href="#"><i class="octicon octicon-sign-out"></i></a></li>
+
+          <script type="text/template" id="userTopbarTemplate">
+            <li><a href="{{ html_url }}"><img src="{{ avatar_url }}" alt="avatar"><span class="username">{{ login }}</span></a></li>
+            <li><a href="#"><i class="octicon octicon-plus menu-down"></i></a></li>
+            <li><a href="https://github.com/notifications"><i class="octicon octicon-inbox"></i></a></li>
+            <li><a href="https://github.com/settings/profile"><i class="octicon octicon-gear"></i></a></li>
+            <li><a href="https://github.com"><i class="octicon octicon-sign-out"></i></a></li>
+          </script>
+
         </ul>
       </div>
     </nav>
@@ -41,66 +44,49 @@
   <div class="page-wrapper">
 
     <aside>
-      <div class="identity">
-        <a href="#"><img class="avatar" alt="avatar"></a>
-        <h1>Bob Holben</h1>
-        <div>bholben</div>
-      </div>
 
-      <ul class="contact-info">
-        <li><i class="octicon octicon-organization"></i>HyperGenius</li>
-        <li><i class="octicon octicon-location"></i>Atlanta</li>
-        <li><i class="octicon octicon-mail"></i><a href="mailto:bholben@gmail.com">bholben@gmail.com</a></li>
-        <li><i class="octicon octicon-clock"></i>Joined on Jun 20, 2013</li>
-      </ul>
+      <script type="text/template" id="userSidebarTemplate">
+        <div class="identity">
+          <a href="#"><img src="{{ user.avatar_url }}" alt="avatar"></a>
+          <h1>{{ user.name }}</h1>
+          <div>{{ user.login }}</div>
+        </div>
 
-      <ul class="stats">
-        <li>
-          <a href="#">
-            <div>3</div>
-            <div>Followers</div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div>23</div>
-            <div>Starred</div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div>17</div>
-            <div>Following</div>
-          </a>
-        </li>
-      </ul>
+        <ul class="contact-info">
+          <li><i class="octicon octicon-organization"></i>{{ user.company }}</li>
+          <li><i class="octicon octicon-location"></i>{{ user.location }}</li>
+          <li><i class="octicon octicon-mail"></i><a href="mailto:{{ user.email }}">{{ user.email }}</a></li>
+          <li><i class="octicon octicon-clock"></i>Joined on {{ user.created_at }}</li>
+        </ul>
+
+        <ul class="stats">
+          <li><a href="#"><div>{{ user.followers }}</div><div>Followers</div></a></li>
+          <li><a href="#"><div>{{ stars.length }}</div><div>Starred</div></a></li>
+          <li><a href="#"><div>{{ user.following }}</div><div>Following</div></a></li>
+        </ul>
+      </script>
+
 
       <div class="orgs">
         <h3>Organizations</h3>
-        <ul>
-          <li><img src="http://placehold.it/43x43" alt=""></li>
-          <li><img src="http://placehold.it/43x43" alt=""></li>
-          <li><img src="http://placehold.it/43x43" alt=""></li>
-          <li><img src="http://placehold.it/43x43" alt=""></li>
-          <li><img src="http://placehold.it/43x43" alt=""></li>
-          <li><img src="http://placehold.it/43x43" alt=""></li>
-          <li><img src="http://placehold.it/43x43" alt=""></li>
-          <li><img src="http://placehold.it/43x43" alt=""></li>
-        </ul>
+        <ul id="organizations"></ul>
+
+          <script type="text/template" id="orgTemplate">
+            <li><img src="{{ avatar_url }}" alt="group"></li>
+          </script>
+
       </div>
     </aside>
 
     <section class="main">
       <nav class="tab">
         <ul>
-          <li><i class="octicon octicon-diff"></i>Contributions</li>
+          <li><i class="octicon octicon-diff-added"></i>Contributions</li>
           <li class="active"><i class="octicon octicon-repo"></i>Repositories</li>
           <li><i class="octicon octicon-rss"></i>Public activity</li>
         </ul>
         <div class="tab-right">
           <div class="slim-button"><i class="octicon octicon-pencil"></i>Edit profile</div>
-          <!-- <div class="tab-widget menu-button"><i class="octicon octicon-megaphone"></i></div> -->
-          <!-- <div class="follow"><i class="octicon octicon-person"></i>Follow</div> -->
         </div>
       </nav>
 
@@ -121,54 +107,22 @@
       </div>
 
       <ul class="repo-list">
-        <li>
-          <div class="repo-info">
-            <h3><a href="#">FizzBuzz</a></h3>
-            <div class="forked-from"><i class="octicon octicon-repo-forked"></i> forked from <a href="#">tiy-atl-js-q1-2015/FizzBuzz</a></div>
-            <p>A group of FizzBuzz's written in JavaScript</p>
-            <small>Updated 14 hours ago</small>
-          </div>
-          <div class="repo-stats"><span class="language">JavaScript</span>
-            <i class="octicon octicon-star"></i><span class="language">0</span>
-            <i class="octicon octicon-git-branch"></i><span class="language">10</span>
-          </div>
-        </li>
-        <li>
-          <div class="repo-info">
-            <h3><a href="#">FizzBuzz</a></h3>
-            <div class="forked-from"><i class="octicon octicon-repo-forked"></i> forked from <a href="#">tiy-atl-js-q1-2015/FizzBuzz</a></div>
-            <p>A group of FizzBuzz's written in JavaScript</p>
-            <small>Updated 14 hours ago</small>
-          </div>
-          <div class="repo-stats"><span class="language">JavaScript</span>
-            <i class="octicon octicon-star"></i><span class="language">0</span>
-            <i class="octicon octicon-git-branch"></i><span class="language">10</span>
-          </div>
-        </li>
-        <li>
-          <div class="repo-info">
-            <h3><a href="#">FizzBuzz</a></h3>
-            <div class="forked-from"><i class="octicon octicon-repo-forked"></i> forked from <a href="#">tiy-atl-js-q1-2015/FizzBuzz</a></div>
-            <p>A group of FizzBuzz's written in JavaScript</p>
-            <small>Updated 14 hours ago</small>
-          </div>
-          <div class="repo-stats"><span class="language">JavaScript</span>
-            <i class="octicon octicon-star"></i><span class="language">0</span>
-            <i class="octicon octicon-git-branch"></i><span class="language">10</span>
-          </div>
-        </li>
-        <li>
-          <div class="repo-info">
-            <h3><a href="#">FizzBuzz</a></h3>
-            <div class="forked-from"><i class="octicon octicon-repo-forked"></i> forked from <a href="#">tiy-atl-js-q1-2015/FizzBuzz</a></div>
-            <p>A group of FizzBuzz's written in JavaScript</p>
-            <small>Updated 14 hours ago</small>
-          </div>
-          <div class="repo-stats"><span class="language">JavaScript</span>
-            <i class="octicon octicon-star"></i><span class="language">0</span>
-            <i class="octicon octicon-git-branch"></i><span class="language">10</span>
-          </div>
-        </li>
+
+        <script type="text/template" id="repoTemplate">
+          <li>
+            <div class="repo-info">
+              <h3><a href="#">{{ name }}</a></h3>
+              <div class="forked-from"><i class="octicon octicon-repo-forked"></i> forked from <a href="#">{{ full_name }}</a></div>
+              <p>{{ description }}</p>
+              <small>Updated {{ updated_at }}</small>
+            </div>
+            <div class="repo-stats"><span>{{ language }}</span>
+              <i class="octicon octicon-star"></i><span>{{ stargazers_count }}</span>
+              <i class="octicon octicon-git-branch"></i><span class="language">{{ forks_count}}</span>
+            </div>
+          </li>
+        </script>
+
       </ul>
     </section>
 
@@ -196,6 +150,8 @@
       <div class="center"><a href="#"><i class="mega-octicon octicon-mark-github"></i></a></div>
     </nav>
   </footer>
+
+
 
   <script src="scripts/vendor.js"></script>
 
