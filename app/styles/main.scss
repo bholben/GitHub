@@ -35,7 +35,6 @@ $cGrayD: #ddd;
 
 // Buttons & Menu Down Icon
 @mixin baseButton() {
-  // font-size: 13.5px;
   font-weight: 700;
   padding: 7px 12px;
   line-height: 24px;
@@ -87,42 +86,21 @@ body {
   box-sizing: border-box;
 }
 
-*:before, *:after {
-  box-sizing: inherit;
-}
+*:before, *:after { box-sizing: inherit; }
 
-h3 {
-  font-size: 20px;
-  margin-bottom: 13px;
-}
+h3 { font-size: 20px; margin-bottom: 13px; }
 
-p {
-  margin: 8 0;
-}
+p { margin: 8 0; }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
+ul { margin: 0; padding: 0; }
 
-li {
-  list-style: none;
-}
+li { list-style: none; }
 
-a {
-  text-decoration: none;
-  color: $cLink;
-}
+a { text-decoration: none; color: $cLink; }
 
-i {
-  margin-right: 5px;
-}
+i { margin-right: 5px; }
 
-small {
-  font-size: 13px;
-  color: $cGray8;
-}
-
+small { font-size: 13px; color: $cGray8; }
 
 // Main page sections: header, .page-wrapper, footer
 // .page-wrapper sections:  aside, section.main
@@ -267,11 +245,7 @@ aside {
 
 section.main {
   @include span-columns(8.95);
-  // height: 500px;
-  // overflow: hidden;
-  // background: orange;
   nav.tab {
-    // overflow: hidden;
     margin-bottom: 15px;
     ul {
       li {
@@ -318,7 +292,6 @@ section.main {
       float: right;
       line-height: 18px;
       margin-left: 10px;
-      // padding:
     }
     li {
       margin: 10px 5px;
