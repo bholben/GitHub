@@ -5,8 +5,9 @@
 // Variables
 $picSize: 230px;
 $orgIconSize: ($picSize / 5) - 3;
-$pageWidth: 980px;
+$pageWidth: 1020px;
 
+$cLink: #4183c4;
 $cGray3: #333;
 $cGray6: #666;
 $cGray7: #777;
@@ -20,8 +21,17 @@ $cGrayD: #ddd;
 @mixin centerPage() {
   margin: 0 auto;
   width: $pageWidth;
+  padding: 0 20px;
 }
 
+@mixin searchBox($width, $height) {
+  width: $width;
+  height: $height;
+  padding: 7px 8px;
+  border: 1px solid $cGrayC;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+}
 
 // Buttons & Menu Down Icon
 @mixin baseButton() {
@@ -101,7 +111,7 @@ li {
 
 a {
   text-decoration: none;
-  color: #4183c4;
+  color: $cLink;
 }
 
 i {
@@ -114,33 +124,65 @@ small {
 }
 
 
-// Main page sections: header, .page-wrapper
-// .page-wrapper sections:  aside, section.main, footer
+// Main page sections: header, .page-wrapper, footer
+// .page-wrapper sections:  aside, section.main
 header {
   height: 50px;
   background: #F5F5F5;
   margin-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
   nav {
     @include centerPage;
-    // padding: 0 17px;
     overflow: hidden;
     li {
       float: left;
-      margin: 0 10px;
-      &:first-child { margin-left: 0; }
+      margin: 0 9px;
+      &:first-child { margin: 0 -5px 0 0; }
       &:last-child { margin-right: 0; }
+      line-height: 50px;
+      font-weight: 700;
     }
     ul.left {
       float: left;
       li {
-
+        .search-github {
+          @include searchBox(358px, 26px);
+          font-size: 12px;
+          font-weight: 400;
+        }
+        &:first-child {
+          margin-top: 5px;
+        }
+      }
+      a i {
+        font-size: 28px;
+        color: $cGray3;
       }
     }
     div {
       float: right;
       ul.right {
         li {
-
+          margin: 0 5px;
+          img {
+            border-radius: 3px;
+          }
+          a i {
+            font-size: 18px;
+            color: $cGray3;
+          }
+          .octicon-plus:after {
+            margin-left: 2px;
+          }
+          .octicon-inbox {
+            font-size: 20px;
+          }
+        }
+        li.userimg {
+          margin-top: 6px;
+        }
+        li.username {
+          margin: 0 15px 0 0;
         }
       }
     }
@@ -155,7 +197,7 @@ header {
 
 aside {
   @include span-columns(3.05);
-  > div {
+  > div, > ul {
     padding: 15px 0;
     border-bottom: 1px solid #eee;
     overflow: hidden;
@@ -177,27 +219,28 @@ aside {
       margin-bottom: 5px;
       font-size: 20px;
       font-weight: 300;
+      color: $cGray6;
     }
   }
-  .contact-info {
+  ul.contact-info {
     font-size: 16px;
-    i {
+    li i {
       width: 12px;
       text-align: center;
       margin: 5px 15px 5px 0;
       color: $cGrayC;
     }
   }
-  .stats div {
+  ul.stats li {
     float: left;
     width: ($picSize - 2) / 3;
     text-align: center;
     div:first-child {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
     }
     div:last-child {
-      font-size: 12px;
+      font-size: 11px;
       color: $cGray9;
     }
   }
@@ -207,10 +250,10 @@ aside {
       font-size: 18px;
       margin: 10px 0;
     }
-    div {
+    ul li {
       float: left;
       margin-right: 3px;
-      &:nth-child(5n+1) {
+      &:nth-child(5n) {
         margin-right: 0;
       }
       img {
@@ -264,13 +307,8 @@ section.main {
     border-bottom: 1px solid $cGrayD;
     form {
       float: left;
-      input[type="text"] {
-        width: 260px;
-        height: 34px;
-        padding: 7px 8px;
-        border: 1px solid $cGrayC;
-        border-radius: 3px;
-        box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+      .search-repos {
+        @include searchBox(260px, 34px)
       }
       input[type="submit"] {
 
@@ -285,6 +323,12 @@ section.main {
     li {
       margin: 10px 5px;
       font-size: 14px;
+    }
+    .active {
+      font-weight: 700;
+      a {
+        color: black;
+      }
     }
   }
   .repo-list {
@@ -326,39 +370,41 @@ footer {
   @include centerPage;
   clear: both;
   overflow: hidden;
-  padding: 40px 0;
   margin-top: 40px;
-  border-top: 1px solid $cGrayD;
+  padding: 0 20px;
   font-size: 12px;
-  ul.left {
-    float: left;
-    width: 400px;
-    li {
+  nav {
+    padding: 40px 0;
+    border-top: 1px solid $cGrayD;
+    ul.left {
       float: left;
-      &:first-child {
-        color: $cGray7;
+      width: 400px;
+      li {
+        float: left;
+        &:first-child {
+          color: $cGray7;
+        }
+      }
+    }
+    ul.right {
+      float: right;
+      width: 400px;
+      li {
+        float: right;
+      }
+    }
+    li {
+      margin: 0 5px;
+      line-height: 30px;
+    }
+    .center {
+      width: 50px;
+      margin: 0 auto;
+      a i {
+        font-size: 24px;
+        color: $cGrayC;
       }
     }
   }
-  ul.right {
-    float: right;
-    width: 400px;
-    li {
-      float: right;
-    }
-  }
-  li {
-    margin: 0 5px;
-    line-height: 30px;
-  }
-  .center {
-    width: 50px;
-    margin: 0 auto;
-    a i {
-      font-size: 24px;
-      color: $cGrayC;
-    }
-  }
-
 }
 

@@ -27,8 +27,8 @@
   <header>
     <nav>
       <ul class="left">
-        <li>Cat</li>
-        <li>Searchbox</li>
+        <li><a href="#"><i class="mega-octicon octicon-mark-github"></i></a></li>
+        <li><input class="search-github" type="text" placeholder="Search GitHub"></li>
         <li>Explore</li>
         <li>Gist</li>
         <li>Blog</li>
@@ -36,11 +36,12 @@
       </ul>
       <div>
         <ul class="right">
-          <li>bholben</li>
-          <li>+</li>
-          <li>Mail</li>
-          <li>Settings</li>
-          <li>Out</li>
+          <li class="userimg"><img src="http://placehold.it/20x20" alt=""></li>
+          <li class="username">bholben</li>
+          <li><a href="#"><i class="octicon octicon-plus menu-down"></i></a></li>
+          <li><a href="#"><i class="octicon octicon-inbox"></i></a></li>
+          <li><a href="#"><i class="octicon octicon-gear"></i></a></li>
+          <li><a href="#"><i class="octicon octicon-sign-out"></i></a></li>
         </ul>
       </div>
     </nav>
@@ -55,38 +56,46 @@
         <div>bholben</div>
       </div>
 
-      <div class="contact-info">
-        <div><i class="octicon octicon-organization"></i>HyperGenius</div>
-        <div><i class="octicon octicon-location"></i>Atlanta</div>
-        <div><i class="octicon octicon-mail"></i><a href="mailto:bholben@gmail.com">bholben@gmail.com</a></div>
-        <div><i class="octicon octicon-clock"></i>Joined on Jun 20, 2013</div>
-      </div>
+      <ul class="contact-info">
+        <li><i class="octicon octicon-organization"></i>HyperGenius</li>
+        <li><i class="octicon octicon-location"></i>Atlanta</li>
+        <li><i class="octicon octicon-mail"></i><a href="mailto:bholben@gmail.com">bholben@gmail.com</a></li>
+        <li><i class="octicon octicon-clock"></i>Joined on Jun 20, 2013</li>
+      </ul>
 
-      <div class="stats">
-        <div>
-          <div>3</div>
-          <div>Followers</div>
-        </div>
-        <div>
-          <div>23</div>
-          <div>Starred</div>
-        </div>
-        <div>
-          <div>17</div>
-          <div>Following</div>
-        </div>
-      </div>
+      <ul class="stats">
+        <li>
+          <a href="#">
+            <div>3</div>
+            <div>Followers</div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div>23</div>
+            <div>Starred</div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div>17</div>
+            <div>Following</div>
+          </a>
+        </li>
+      </ul>
 
       <div class="orgs">
         <h3>Organizations</h3>
-        <div><img src="http://placehold.it/43x43" alt=""></div>
-        <div><img src="http://placehold.it/43x43" alt=""></div>
-        <div><img src="http://placehold.it/43x43" alt=""></div>
-        <div><img src="http://placehold.it/43x43" alt=""></div>
-        <div><img src="http://placehold.it/43x43" alt=""></div>
-        <div><img src="http://placehold.it/43x43" alt=""></div>
-        <div><img src="http://placehold.it/43x43" alt=""></div>
-        <div><img src="http://placehold.it/43x43" alt=""></div>
+        <ul>
+          <li><img src="http://placehold.it/43x43" alt=""></li>
+          <li><img src="http://placehold.it/43x43" alt=""></li>
+          <li><img src="http://placehold.it/43x43" alt=""></li>
+          <li><img src="http://placehold.it/43x43" alt=""></li>
+          <li><img src="http://placehold.it/43x43" alt=""></li>
+          <li><img src="http://placehold.it/43x43" alt=""></li>
+          <li><img src="http://placehold.it/43x43" alt=""></li>
+          <li><img src="http://placehold.it/43x43" alt=""></li>
+        </ul>
       </div>
     </aside>
 
@@ -106,7 +115,7 @@
 
       <div class="filter-bar">
         <form>
-          <input type="text" placeholder="Find a repository...">
+          <input class="search-repos" type="text" placeholder="Find a repository...">
           <!-- <input type="submit std-button" value="Search"> -->
         </form>
         <div class="success-button"><i class="octicon octicon-repo"></i>New</div>
@@ -116,7 +125,7 @@
           <li><a href="#">Sources</a></li>
           <li><a href="#">Private</a></li>
           <li><a href="#">Public</a></li>
-          <li><a href="#">All</a></li>
+          <li class="active"><a href="#">All</a></li>
         </ul>
       </div>
 
@@ -176,24 +185,26 @@
   </div>
 
   <footer>
-    <ul class="left">
-      <li>&copy; 2015 GitHub, Inc.</li>
-      <li><a href="#">Terms</a></li>
-      <li><a href="#">Privacy</a></li>
-      <li><a href="#">Security</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
+    <nav>
+      <ul class="left">
+        <li>&copy; 2015 GitHub, Inc.</li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Security</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
 
-    <ul class="right">
-      <li><a href="#">About</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="#">Shop</a></li>
-      <li><a href="#">Training</a></li>
-      <li><a href="#">API</a></li>
-      <li><a href="#">Status</a></li>
-    </ul>
+      <ul class="right">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Training</a></li>
+        <li><a href="#">API</a></li>
+        <li><a href="#">Status</a></li>
+      </ul>
 
-    <div class="center"><a href="#"><i class="mega-octicon octicon-mark-github"></i></a></div>
+      <div class="center"><a href="#"><i class="mega-octicon octicon-mark-github"></i></a></div>
+    </nav>
   </footer>
 
   <!-- build:js scripts/vendor.js -->
