@@ -10,6 +10,7 @@ $pageWidth: 980px;
 $cGray3: #333;
 $cGray6: #666;
 $cGray7: #777;
+$cGray8: #888;
 $cGray9: #999;
 $cGrayC: #ccc;
 $cGrayD: #ddd;
@@ -82,6 +83,11 @@ body {
 
 h3 {
   font-size: 20px;
+  margin-bottom: 13px;
+}
+
+p {
+  margin: 8 0;
 }
 
 ul {
@@ -100,6 +106,11 @@ a {
 
 i {
   margin-right: 5px;
+}
+
+small {
+  font-size: 13px;
+  color: $cGray8;
 }
 
 
@@ -286,9 +297,26 @@ section.main {
         h3 {
           margin-top: 0;
         }
+        .forked-from {
+          color: $cGray8;
+          font-size: 12px;
+          i {
+            font-size: inherit;
+            margin-right: 0;
+          }
+        }
       }
       .repo-stats {
         float: right;
+        font-size: 13px;
+        font-weight: 700;
+        color: $cGray8;
+        span {
+          margin-right: 7px;
+        }
+        i {
+          margin: 2px;;
+        }
       }
     }
   }
