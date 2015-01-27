@@ -9,6 +9,7 @@ $pageWidth: 980px;
 
 $cGray3: #333;
 $cGray6: #666;
+$cGray7: #777;
 $cGray9: #999;
 $cGrayC: #ccc;
 $cGrayD: #ddd;
@@ -94,6 +95,7 @@ li {
 
 a {
   text-decoration: none;
+  color: #4183c4;
 }
 
 i {
@@ -213,7 +215,7 @@ section.main {
   @include span-columns(8.95);
   // height: 500px;
   // overflow: hidden;
-  background: orange;
+  // background: orange;
   nav.tab {
     // overflow: hidden;
     margin-bottom: 15px;
@@ -293,16 +295,21 @@ section.main {
 }
 
 footer {
+  @include centerPage;
   clear: both;
   overflow: hidden;
   padding: 40px 0;
   margin-top: 40px;
   border-top: 1px solid $cGrayD;
+  font-size: 12px;
   ul.left {
     float: left;
     width: 400px;
     li {
       float: left;
+      &:first-child {
+        color: $cGray7;
+      }
     }
   }
   ul.right {
@@ -319,6 +326,10 @@ footer {
   .center {
     width: 50px;
     margin: 0 auto;
+    a i {
+      font-size: 24px;
+      color: $cGrayC;
+    }
   }
 
 }
