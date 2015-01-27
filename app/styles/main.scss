@@ -83,6 +83,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: $cGray3;
+  background: #ffd;  // Make this page look slightly different than the real deal.
   box-sizing: border-box;
 }
 
@@ -115,10 +116,14 @@ header {
     li {
       float: left;
       margin: 0 9px;
-      &:first-child { margin: 0 -5px 0 0; }
-      &:last-child { margin-right: 0; }
       line-height: 50px;
       font-weight: 700;
+      cursor: pointer;
+      &:first-child { margin: 0 -5px 0 0; }
+      &:last-child { margin-right: 0; }
+      &:hover, a:hover, a i:hover {
+        color: $cLink;
+      }
     }
     ul.left {
       float: left;
@@ -131,10 +136,13 @@ header {
         &:first-child {
           margin-top: 5px;
         }
-      }
-      a i {
-        font-size: 28px;
-        color: $cGray3;
+        a i {
+          font-size: 28px;
+          color: $cGray3;
+          &:hover {
+            color: $cLink;
+          }
+        }
       }
     }
     div {
@@ -142,13 +150,26 @@ header {
       ul.right {
         li {
           margin: 0 5px;
+          a {
+            color: $cGray3;
+            &:hover {
+              color: $cLink;
+            }
+          }
           img {
             width: 20px;
             border-radius: 3px;
+            vertical-align: middle;
+          }
+          .username {
+            margin: 0 5px;
           }
           a i {
             font-size: 18px;
             color: $cGray3;
+            &:hover {
+              color: $cLink;
+            }
           }
           .octicon-plus:after {
             margin-left: 2px;
@@ -156,12 +177,6 @@ header {
           .octicon-inbox {
             font-size: 20px;
           }
-        }
-        li.userimg {
-          margin-top: 6px;
-        }
-        li.username {
-          margin: 0 15px 0 0;
         }
       }
     }
