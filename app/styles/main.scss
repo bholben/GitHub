@@ -2,25 +2,324 @@
 @import '../../bower_components/bourbon/dist/bourbon';
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
-// Custom Styles
-body {
-  background: #fafafa;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
+// Variables
+$picSize: 230px;
+$orgIconSize: ($picSize / 5) - 3;
+$pageWidth: 980px;
+
+$cGray3: #333;
+$cGray6: #666;
+$cGray9: #999;
+$cGrayC: #ccc;
+$cGrayD: #ddd;
+
+
+// Mixins
+@mixin centerPage() {
+  margin: 0 auto;
+  width: $pageWidth;
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 600px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
-  h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+
+// Buttons & Menu Down Icon
+@mixin baseButton() {
+  // font-size: 13.5px;
+  font-weight: 700;
+  padding: 7px 12px;
+  line-height: 24px;
+  color: $cGray3;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+  background-color: #ddd;
+  background-image: linear-gradient(#eee, #ddd);
+  background-repeat: repeat-x;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.std-button {
+  @include baseButton;
+}
+
+.slim-button {
+  @include baseButton;
+  padding: 0 10px;
+}
+
+.success-button {
+  @include baseButton;
+  background-color: #60b044;
+  background-image: linear-gradient(#8add6d, #60b044);
+  background-repeat: repeat-x;
+  border-color: #5ca941;
+  color: white;
+}
+
+.menu-down:after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  content: "";
+  vertical-align: -2px;
+  border: 4px solid;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+
+// Base Elements
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: $cGray3;
+  box-sizing: border-box;
+}
+
+*:before, *:after {
+  box-sizing: inherit;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+i {
+  margin-right: 5px;
+}
+
+
+// Main page sections: header, .page-wrapper
+// .page-wrapper sections:  aside, section.main, footer
+header {
+  height: 50px;
+  background: #F5F5F5;
+  margin-bottom: 20px;
+  nav {
+    @include centerPage;
+    // padding: 0 17px;
+    overflow: hidden;
+    li {
+      float: left;
+      margin: 0 10px;
+      &:first-child { margin-left: 0; }
+      &:last-child { margin-right: 0; }
+    }
+    ul.left {
+      float: left;
+      li {
+
+      }
+    }
+    div {
+      float: right;
+      ul.right {
+        li {
+
+        }
+      }
+    }
   }
 }
+
+.page-wrapper {
+  @include centerPage;
+  @include outer-container;
+  max-width: $pageWidth;
+}
+
+aside {
+  @include span-columns(3.05);
+  > div {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+  }
+  .identity {
+    img {
+      width: $picSize;
+      height: $picSize;
+      margin-top: -15px;
+      border-radius: 6px;
+    }
+    h1 {
+      margin: 3px 0 2px;
+      font-size: 26px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    div {
+      margin-bottom: 5px;
+      font-size: 20px;
+      font-weight: 300;
+    }
+  }
+  .contact-info {
+    font-size: 16px;
+    i {
+      width: 12px;
+      text-align: center;
+      margin: 5px 15px 5px 0;
+      color: $cGrayC;
+    }
+  }
+  .stats div {
+    float: left;
+    width: ($picSize - 2) / 3;
+    text-align: center;
+    div:first-child {
+      font-size: 32px;
+      font-weight: 700;
+    }
+    div:last-child {
+      font-size: 12px;
+      color: $cGray9;
+    }
+  }
+  .orgs {
+    border-bottom: none;
+    h3 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    div {
+      float: left;
+      margin-right: 3px;
+      &:nth-child(5n+1) {
+        margin-right: 0;
+      }
+      img {
+        width: $orgIconSize;
+        height: $orgIconSize;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+section.main {
+  @include span-columns(8.95);
+  // height: 500px;
+  // overflow: hidden;
+  background: orange;
+  nav.tab {
+    // overflow: hidden;
+    margin-bottom: 15px;
+    ul {
+      li {
+        float: left;
+        padding: 8px 12px 7px;
+        font-size: 15px;
+        line-height: 20px;
+        color: $cGray6;
+        border: 1px solid transparent;
+        border-bottom: 1px solid $cGrayD;
+        cursor: pointer;
+      }
+      .active {
+        color: $cGray3;
+        border: 1px solid $cGrayD;
+        border-bottom: 1px solid transparent;
+        border-radius: 3px 3px 0 0;
+      }
+    }
+    .tab-right {
+      overflow: hidden;
+      border-bottom: 1px solid $cGrayD;
+      .slim-button {
+        float: right;
+        margin: 0 0 10px 2px;
+      }
+
+    }
+  }
+  .filter-bar {
+    overflow: hidden;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $cGrayD;
+    form {
+      float: left;
+      input[type="text"] {
+        width: 260px;
+        height: 34px;
+        padding: 7px 8px;
+        border: 1px solid $cGrayC;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+      }
+      input[type="submit"] {
+
+      }
+    }
+    .success-button, ul, li {
+      float: right;
+      line-height: 18px;
+      margin-left: 10px;
+      // padding:
+    }
+    li {
+      margin: 10px 5px;
+      font-size: 14px;
+    }
+  }
+  .repo-list {
+    li {
+      overflow: hidden;
+      padding: 30px 0;
+      border-bottom: 1px solid $cGrayD;
+      .repo-info {
+        float: left;
+        h3 {
+          margin-top: 0;
+        }
+      }
+      .repo-stats {
+        float: right;
+      }
+    }
+  }
+}
+
+footer {
+  clear: both;
+  overflow: hidden;
+  padding: 40px 0;
+  margin-top: 40px;
+  border-top: 1px solid $cGrayD;
+  ul.left {
+    float: left;
+    width: 400px;
+    li {
+      float: left;
+    }
+  }
+  ul.right {
+    float: right;
+    width: 400px;
+    li {
+      float: right;
+    }
+  }
+  li {
+    margin: 0 5px;
+    line-height: 30px;
+  }
+  .center {
+    width: 50px;
+    margin: 0 auto;
+  }
+
+}
+
