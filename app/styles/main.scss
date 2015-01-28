@@ -31,6 +31,11 @@ $cGrayD: #ddd;
   border: 1px solid $cGrayC;
   border-radius: 3px;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+  outline: none;
+  &:focus {
+    border-color: #51a7e8;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075),0 0 5px rgba(81,167,232,0.5);
+  }
 }
 
 // Buttons & Menu Down Icon
@@ -48,9 +53,7 @@ $cGrayD: #ddd;
   cursor: pointer;
 }
 
-.std-button {
-  @include baseButton;
-}
+.std-button { @include baseButton; }
 
 .slim-button {
   @include baseButton;
@@ -64,6 +67,12 @@ $cGrayD: #ddd;
   background-repeat: repeat-x;
   border-color: #5ca941;
   color: white;
+  &:hover {
+    background-color: #569e3d;
+    background-image: linear-gradient(#79d858, #569e3d);
+    background-repeat: repeat-x;
+    border-color: #4a993e;
+  }
 }
 
 .menu-down:after {
@@ -83,8 +92,10 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: $cGray3;
-  background: #ffd;  // Make this page look slightly different than the real deal.
   box-sizing: border-box;
+  // Make this page look slightly different than the real deal.
+  border-left: 5px solid red;
+  border-right: 5px solid red;
 }
 
 *:before, *:after { box-sizing: inherit; }
@@ -120,10 +131,7 @@ header {
       font-weight: 700;
       cursor: pointer;
       &:first-child { margin: 0 -5px 0 0; }
-      &:last-child { margin-right: 0; }
-      &:hover, a:hover, a i:hover {
-        color: $cLink;
-      }
+      &:hover { color: $cLink; }
     }
     ul.left {
       float: left;
@@ -133,14 +141,13 @@ header {
           font-size: 12px;
           font-weight: 400;
         }
-        &:first-child {
-          margin-top: 5px;
-        }
-        a i {
-          font-size: 28px;
+        &:first-child { margin-top: 5px; }
+        a {
           color: $cGray3;
-          &:hover {
-            color: $cLink;
+          i {
+            font-size: 28px;
+            color: $cGray3;
+            &:hover { color: $cLink; }
           }
         }
       }
@@ -150,33 +157,24 @@ header {
       ul.right {
         li {
           margin: 0 5px;
+          &:last-child { margin-right: -3px; }
           a {
             color: $cGray3;
-            &:hover {
-              color: $cLink;
-            }
+            &:hover { color: $cLink; }
           }
           img {
             width: 20px;
             border-radius: 3px;
             vertical-align: middle;
           }
-          .username {
-            margin: 0 5px;
-          }
+          .username { margin: 0 5px; }
           a i {
             font-size: 18px;
             color: $cGray3;
-            &:hover {
-              color: $cLink;
-            }
+            &:hover { color: $cLink; }
           }
-          .octicon-plus:after {
-            margin-left: 2px;
-          }
-          .octicon-inbox {
-            font-size: 20px;
-          }
+          .octicon-plus:after { margin-left: 2px; }
+          .octicon-inbox { font-size: 20px; }
         }
       }
     }
@@ -185,12 +183,12 @@ header {
 
 .page-wrapper {
   @include centerPage;
-  @include outer-container;
+  @include outer-container;  // Neat grid system
   max-width: $pageWidth;
 }
 
 aside {
-  @include span-columns(3.05);
+  @include span-columns(3.05);  // Neat grid system
   > div, > ul {
     padding: 15px 0;
     border-bottom: 1px solid #eee;
@@ -229,6 +227,7 @@ aside {
     float: left;
     width: ($picSize - 2) / 3;
     text-align: center;
+    a:hover div{ color: $cLink; }
     div:first-child {
       font-size: 28px;
       font-weight: 700;
@@ -247,9 +246,7 @@ aside {
     ul li {
       float: left;
       margin-right: 3px;
-      &:nth-child(5n) {
-        margin-right: 0;
-      }
+      &:nth-child(5n) { margin-right: 0; }
       img {
         width: $orgIconSize;
         height: $orgIconSize;
@@ -260,7 +257,7 @@ aside {
 }
 
 section.main {
-  @include span-columns(8.95);
+  @include span-columns(8.95);  // Neat grid system
   nav.tab {
     margin-bottom: 15px;
     ul {
@@ -300,9 +297,6 @@ section.main {
       .search-repos {
         @include searchBox(260px, 34px)
       }
-      input[type="submit"] {
-
-      }
     }
     .success-button, ul, li {
       float: right;
@@ -312,12 +306,13 @@ section.main {
     li {
       margin: 10px 5px;
       font-size: 14px;
+      a:hover {
+        text-decoration: underline;
+      }
     }
     .active {
       font-weight: 700;
-      a {
-        color: black;
-      }
+      a { color: black; }
     }
   }
   .repo-list {
@@ -329,6 +324,9 @@ section.main {
         float: left;
         h3 {
           margin-top: 0;
+          a:hover {
+            text-decoration: underline;
+          }
         }
         .forked-from {
           color: $cGray8;
@@ -346,9 +344,12 @@ section.main {
         color: $cGray8;
         span {
           margin-right: 7px;
+          &:last-child { margin-right: 0 };
         }
-        i {
-          margin: 2px;;
+        a {
+          color: $cGray8;
+          &:hover { color: $cLink; };
+          i { margin: 2px;; }
         }
       }
     }
@@ -370,17 +371,13 @@ footer {
       width: 400px;
       li {
         float: left;
-        &:first-child {
-          color: $cGray7;
-        }
+        &:first-child { color: $cGray7; }
       }
     }
     ul.right {
       float: right;
       width: 400px;
-      li {
-        float: right;
-      }
+      li { float: right; }
     }
     li {
       margin: 0 5px;
