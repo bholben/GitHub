@@ -13,6 +13,7 @@ $cGray6: #666;
 $cGray7: #777;
 $cGray8: #888;
 $cGray9: #999;
+$cGrayB: #bbb;
 $cGrayC: #ccc;
 $cGrayD: #ddd;
 
@@ -45,12 +46,17 @@ $cGrayD: #ddd;
   line-height: 24px;
   color: $cGray3;
   text-shadow: 0 1px 0 rgba(255,255,255,0.9);
-  background-color: #ddd;
-  background-image: linear-gradient(#eee, #ddd);
+  background-color: #eee;
+  background-image: linear-gradient(#fcfcfc, #eee);
   background-repeat: repeat-x;
-  border: 1px solid #ccc;
+  border: 1px solid #d5d5d5;
   border-radius: 3px;
   cursor: pointer;
+  &:hover {
+    background-color: #ddd;
+    background-image: linear-gradient(#eee, #ddd);
+    border: 1px solid #ccc;
+  }
 }
 
 .std-button { @include baseButton; }
@@ -70,7 +76,6 @@ $cGrayD: #ddd;
   &:hover {
     background-color: #569e3d;
     background-image: linear-gradient(#79d858, #569e3d);
-    background-repeat: repeat-x;
     border-color: #4a993e;
   }
 }
@@ -382,6 +387,7 @@ footer {
     li {
       margin: 0 5px;
       line-height: 30px;
+      a:hover { text-decoration: underline; }
     }
     .center {
       width: 50px;
@@ -389,6 +395,7 @@ footer {
       a i {
         font-size: 24px;
         color: $cGrayC;
+        &:hover { color: $cGrayB; }
       }
     }
   }
