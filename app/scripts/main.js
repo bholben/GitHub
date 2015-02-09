@@ -18,10 +18,6 @@ var repoList = $('section.main .repo-list');
 repos = _.sortBy( repos, 'updated_at' ).reverse();
 repos.forEach(function (repo) {
   repo.updated_at = moment(repo.updated_at).fromNow();
-  if (repo.fork) {
-    repoList.append(Handlebars.templates.repoForked(repo));
-  } else {
-    repoList.append(Handlebars.templates.repo(repo));
-  }
+  repoList.append(Handlebars.templates.repo(repo));
 });
 

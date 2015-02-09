@@ -2,6 +2,7 @@
 <li>
   <div class="repo-info">
     <h3><a href="{{ html_url }}">{{ name }}</a></h3>
+    {{#if fork}}<div class="forked-from"><i class="octicon octicon-repo-forked"></i> forked from <a href="#">{{ full_name }}</a></div>{{/if}}
     <p>{{ description }}</p>
     <small>Updated {{ updated_at }}</small>
   </div>
