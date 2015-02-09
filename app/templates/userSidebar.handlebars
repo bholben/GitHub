@@ -1,0 +1,20 @@
+
+<div class="identity">
+  <a href="https://github.com/account"><img src="{{ user.avatar_url }}" alt="avatar"></a>
+  <h1>{{ user.name }}</h1>
+  <div>{{ user.login }}</div>
+</div>
+
+<ul class="contact-info">
+  <li><i class="octicon octicon-organization"></i>{{ user.company }}</li>
+  <li><i class="octicon octicon-location"></i>{{ user.location }}</li>
+  <li><i class="octicon octicon-mail"></i><a href="mailto:{{ user.email }}">{{ user.email }}</a></li>
+  <li><i class="octicon octicon-clock"></i>Joined on {{ user.created_at }}</li>
+</ul>
+
+<ul class="stats">
+  <li><a href="https://github.com/{{ user.login }}/followers"><div>{{ user.followers }}</div><div>Followers</div></a></li>
+  <li><a href="https://github.com/stars"><div>{{ stars.length }}</div><div>Starred</div></a></li>
+  <li><a href="https://github.com/{{ user.login }}/following"><div>{{ user.following }}</div><div>Following</div></a></li>
+</ul>
+
