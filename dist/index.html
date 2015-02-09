@@ -26,17 +26,7 @@
         <li><a href="https://help.github.com">Help</a></li>
       </ul>
       <div>
-        <ul class="right">
-
-          <script type="text/template" id="userTopbarTemplate">
-            <li><a href="{{ html_url }}"><img src="{{ avatar_url }}" alt="avatar"><span class="username">{{ login }}</span></a></li>
-            <li><a href="#"><i class="octicon octicon-plus menu-down"></i></a></li>
-            <li><a href="https://github.com/notifications"><i class="octicon octicon-inbox"></i></a></li>
-            <li><a href="https://github.com/settings/profile"><i class="octicon octicon-gear"></i></a></li>
-            <li><a href="https://github.com"><i class="octicon octicon-sign-out"></i></a></li>
-          </script>
-
-        </ul>
+        <ul class="right"></ul>
       </div>
     </nav>
   </header>
@@ -44,37 +34,9 @@
   <div class="page-wrapper">
 
     <aside>
-
-      <script type="text/template" id="userSidebarTemplate">
-        <div class="identity">
-          <a href="https://github.com/account"><img src="{{ user.avatar_url }}" alt="avatar"></a>
-          <h1>{{ user.name }}</h1>
-          <div>{{ user.login }}</div>
-        </div>
-
-        <ul class="contact-info">
-          <li><i class="octicon octicon-organization"></i>{{ user.company }}</li>
-          <li><i class="octicon octicon-location"></i>{{ user.location }}</li>
-          <li><i class="octicon octicon-mail"></i><a href="mailto:{{ user.email }}">{{ user.email }}</a></li>
-          <li><i class="octicon octicon-clock"></i>Joined on {{ user.created_at }}</li>
-        </ul>
-
-        <ul class="stats">
-          <li><a href="https://github.com/{{ user.login }}/followers"><div>{{ user.followers }}</div><div>Followers</div></a></li>
-          <li><a href="https://github.com/stars"><div>{{ stars.length }}</div><div>Starred</div></a></li>
-          <li><a href="https://github.com/{{ user.login }}/following"><div>{{ user.following }}</div><div>Following</div></a></li>
-        </ul>
-      </script>
-
-
       <div class="orgs">
         <h3>Organizations</h3>
         <ul id="organizations"></ul>
-
-          <script type="text/template" id="orgTemplate">
-            <li><a href="https://github.com/{{ login }}"><img src="{{ avatar_url }}" alt="group"></a></li>
-          </script>
-
       </div>
     </aside>
 
@@ -106,38 +68,7 @@
         </ul>
       </div>
 
-      <ul class="repo-list">
-
-        <script type="text/template" id="repoForkedTemplate">
-          <li>
-            <div class="repo-info">
-              <h3><a href="{{ html_url }}">{{ name }}</a></h3>
-              <div class="forked-from"><i class="octicon octicon-repo-forked"></i> forked from <a href="#">{{ full_name }}</a></div>
-              <p>{{ description }}</p>
-              <small>Updated {{ updated_at }}</small>
-            </div>
-            <div class="repo-stats"><span>{{ language }}</span>
-              <a href="https://github.com/{{ owner.login }}/GitHub/stargazers"><i class="octicon octicon-star"></i><span>{{ stargazers_count }}</span></a>
-              <a href="https://github.com/{{ owner.login }}/GitHub/network"><i class="octicon octicon-git-branch"></i><span>{{ forks_count}}</span></a>
-            </div>
-          </li>
-        </script>
-
-        <script type="text/template" id="repoTemplate">
-          <li>
-            <div class="repo-info">
-              <h3><a href="{{ html_url }}">{{ name }}</a></h3>
-              <p>{{ description }}</p>
-              <small>Updated {{ updated_at }}</small>
-            </div>
-            <div class="repo-stats"><span>{{ language }}</span>
-              <a href="https://github.com/{{ owner.login }}/GitHub/stargazers"><i class="octicon octicon-star"></i><span>{{ stargazers_count }}</span></a>
-              <a href="https://github.com/{{ owner.login }}/GitHub/network"><i class="octicon octicon-git-branch"></i><span>{{ forks_count}}</span></a>
-            </div>
-          </li>
-        </script>
-
-      </ul>
+      <ul class="repo-list"></ul>
     </section>
 
   </div>
