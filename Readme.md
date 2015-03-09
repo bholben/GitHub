@@ -11,7 +11,7 @@ A re-creation of my GitHub repo page.
 ### Technologies
   * HTML
   * CSS
-  * Sass (SASS)
+  * Sass
   * JavaScript
   * Bourbon/Neat
   * Underscore (templating)
